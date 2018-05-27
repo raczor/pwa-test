@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 app.set('port', (config.port));
 
 app.get('/', (req, res) => {
-    res.send('Welcome')
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.post('/prices/new', (req, res) => {
