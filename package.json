@@ -14,7 +14,8 @@
     "pusher-js": "4.1.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-scripts": "1.0.10"
+    "react-scripts": "1.0.10",
+    "serve-favicon": "2.5.0"
   },
   "scripts": {
     "start:client": "react-scripts start",

@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const app = express();
 const Pusher = require('pusher');
@@ -13,8 +14,12 @@ const pusher = new Pusher({
     encrypted: true
 });
 
+//Favicon
+app.use(favicon(path.resolve('public/favicon.ico')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname)));
 
 app.use((req, res, next) => {
     // Website you wish to allow to connect
@@ -32,8 +37,8 @@ app.use((req, res, next) => {
 
 app.set('port', (config.port));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'));
 });
 
 app.post('/prices/new', (req, res) => {
